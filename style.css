@@ -1,0 +1,13 @@
+html, body {
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+}
+
+body {
+    background-color: #080b12;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
