@@ -1,4 +1,3 @@
-
 async function loadNASAContent() {
 
     const container = document.getElementById("bg-media");

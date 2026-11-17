@@ -22,7 +22,6 @@ body {
     overflow: hidden;
 }
 
-/* Background image, video and iframe */
 
 #bg-media img,
 #bg-media video,
@@ -35,7 +34,7 @@ body {
     border: none;
 }
 
-/* Dark overlay */
+
 
 .overlay {
     position: fixed;
@@ -44,7 +43,6 @@ body {
     z-index: -1;
 }
 
-/* Main content */
 
 .content {
     min-height: 100vh;
@@ -85,8 +83,6 @@ body {
     border-radius: 20px;
     outline: none;
     box-sizing: border-box;
-
-    /* Normal shadow */
     box-shadow: 0 4px 15px rgba(239, 236, 236, 0.3);
 
     transition: all 0.3s ease;
