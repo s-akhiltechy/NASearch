@@ -175,6 +175,172 @@ function showNASAImage(data, doc, container) {
 
 }
 
-
-// Run the function
 loadNASAContent();
+
+// ============================
+// 3. USEFUL APPS
+// ============================
+
+const apps = [
+
+    {
+        name: "Google",
+        logo: "https://cdn-icons-png.flaticon.com/128/281/281764.png",
+        url: "https://www.google.com"
+    },
+
+    {
+        name: "YouTube",
+        logo: "https://cdn-icons-png.flaticon.com/128/1384/1384060.png",
+        url: "https://www.youtube.com"
+    },
+
+    {
+        name: "GitHub",
+        logo: "https://cdn-icons-png.flaticon.com/128/2111/2111432.png",
+        url: "https://github.com"
+    },
+
+    {
+        name: "Canva",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDwn0ZVEmfrvQ855ti0L2JFL8fKHbMBnq9HZXlUTznskofUz68WZ8OjF4e&s=10",
+        url: "https://www.canva.com"
+    },
+
+    {
+        name: "ChatGPT",
+        logo: "https://cdn-icons-png.flaticon.com/128/11865/11865326.png",
+        url: "https://chatgpt.com"
+    },
+
+    {
+        name: "Spotify",
+        logo: "https://cdn-icons-png.flaticon.com/128/3669/3669986.png",
+        url: "https://open.spotify.com"
+    }
+
+];
+
+
+function loadApps() {
+
+    const container = document.getElementById("apps-container");
+
+    container.innerHTML = "";
+
+    apps.forEach(app => {
+
+        container.innerHTML += `
+            <a href="${app.url}"
+               target="_blank"
+               class="app-card">
+
+                <img
+                    src="${app.logo}"
+                    alt="${app.name} logo"
+                    class="app-logo"
+                >
+
+                <h3>${app.name}</h3>
+
+            </a>
+        `;
+
+    });
+}
+
+loadApps();
+
+
+
+
+const LASTFM_API_KEY = "c4dce15f1a7c30abd78cb7de34f5156b";
+
+async function loadMusic() {
+
+    const container = document.getElementById("music-container");
+
+    try {
+
+        const response = await fetch(
+            `https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=${LASTFM_API_KEY}&format=json&limit=6`
+        );
+
+        const data = await response.json();
+
+        if (data.error) {
+            throw new Error(data.message);
+        }
+
+        container.innerHTML = "";
+
+        for (let index = 0; index < data.tracks.track.length; index++) {
+
+            const song = data.tracks.track[index];
+
+            // Search iTunes for album artwork
+            const searchQuery = encodeURIComponent(
+                `${song.name} ${song.artist.name}`
+            );
+
+            const artworkResponse = await fetch(
+                `https://itunes.apple.com/search?term=${searchQuery}&entity=song&limit=1`
+            );
+
+            const artworkData = await artworkResponse.json();
+
+            let image = "";
+
+            if (artworkData.results.length > 0) {
+
+                image = artworkData.results[0].artworkUrl100
+                    .replace("100x100", "300x300");
+
+            }
+
+            container.innerHTML += `
+
+                <div class="music-card">
+
+                    <img
+                        src="${image}"
+                        alt="${song.name}"
+                        class="album-cover"
+                    >
+
+                    <div class="music-info">
+
+                        <h3>${song.name}</h3>
+
+                        <p>${song.artist.name}</p>
+
+                        <small>
+                            ${Number(song.listeners).toLocaleString()}
+                            listeners
+                        </small>
+
+                    </div>
+
+                    <a
+                        href="${song.url}"
+                        target="_blank"
+                        class="listen-btn"
+                    >
+                        Listen
+                    </a>
+
+                </div>
+
+            `;
+        }
+
+    } catch (error) {
+
+        console.error("Music error:", error);
+
+        container.innerHTML =
+            "<p>Unable to load music.</p>";
+    }
+}
+
+loadMusic();

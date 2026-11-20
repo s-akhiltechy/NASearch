@@ -12,6 +12,17 @@ The idea was to make a simple search engine a little more interesting by using N
 - NASA's Astronomy Picture of the Day as the background.
 - Automatically fetches the daily image using NASA's API.
 
+![NASearch Preview](images/preview.png)
+
+- A navigation section for Top Apps which are used.
+
+![NASearch Preview](images/preview2.png)
+
+- A section to discover the Global Top Music
+
+![NASearch Preview](images/preview3.png)
+
+
 
 ## Built With
 

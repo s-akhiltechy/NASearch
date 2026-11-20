@@ -14,6 +14,16 @@ body {
     isolation: isolate;
 }
 
+html {
+    overflow-y: auto;
+}
+
+body {
+    min-height: 100vh;
+    height: auto;
+    overflow-y: auto;
+}
+
 
 #bg-media {
     position: fixed;
@@ -95,9 +105,277 @@ body {
 
 .search:focus {
     transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);}
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 
-/************/
+}
+
+.content {
+
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+}
+
+
+
+
+.content-section {
+
+    width: 100%;
+
+    margin: 0 auto 70px;
+
+    text-align: center;
+}
+
+
+
+
+.content-section h2 {
+
+    font-size: 28px;
+    font-weight: 400;
+    margin: 0 0 25px;
+    color:white;
+    font-family:"Google Sans";
+    margin-bottom:40px;
+}
+
+
+
+.content-box {
+
+    width: 80%;
+    margin: 0 auto;
+    min-height: 150px;
+    
+    display: flex;
+    align-content: center;
+    justify-content:space-around;
+
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background: white;
+    box-shadow:0 2px 10px rgba(0, 0, 0, 0.06);
+
+    transition: 0.25s ease;
+}
+
+
+.content-box:hover {
+
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+}
+
+
+
+
+.content-box p {
+    color: #777;
+    font-size: 16px;
+    margin: 0;
+    font-family:"Google Sans";
+}
+
+
+@media (max-width: 700px) {
+
+    .nova {
+        font-size: 42px;
+
+        margin-bottom: 35px;
+    }
+
+
+    .container {
+        margin-top: -50px;
+    }
+
+
+    .search-bar input {
+        width: 100%;
+
+        height: 50px;
+    }
+
+
+    .submit {
+        width: 50px;
+        height: 50px;
+    }
+
+
+    .content {
+        padding: 0 15px 50px;
+    }
+
+
+    .content-section h2 {
+        font-size: 24px;
+    }
+
+
+    .content-box {
+        min-height: 130px;
+    }
+}
+
+#apps-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+
+    
+}
+
+.app-card {
+    text-decoration: none;
+    color: #111;
+    font-family:"Google Sans";
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 150px;
+
+    background: white;
+
+    border: 1px solid #ddd;
+    border-radius: 18px;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.10);
+
+    transition: all 0.2s ease;
+
+}
+
+.app-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+.app-logo {
+    width: 45px;
+    height: 45px;
+    font-family:"Google Sans";
+    object-fit: contain;
+
+    margin-bottom: 12px;
+}
+
+.app-card h3 {
+    margin: 0;
+
+    font-size: 17px;
+    font-weight: 500;
+}
+
+
+#music-container {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px;
+
+    background: transparent;
+
+    border: none;
+
+    box-shadow: none;
+
+    padding: 0;
+}
+
+
+
+.music-card {
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    text-align: left;
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease;
+}
+
+
+.music-card:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+.album-cover {
+
+    width: 70px;
+
+    height: 70px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+}
+
+
+.music-info {
+
+    flex: 1;
+    color:black;
+}
+
+.music-info h3 {
+
+    margin: 0 0 5px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.music-info p {
+
+    margin: 0;
+    color: #777;
+    font-size: 14px;
+}
+
+
+.listen-btn {
+
+    text-decoration: none;
+    color: #111;
+    padding: 8px 14px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+.listen-btn:hover {
+
+    background: #111;
+    color: white;
+    transform: translateY(-2px);
+}
 
 
 @media (max-width: 600px) {
